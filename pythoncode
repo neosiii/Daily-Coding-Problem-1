@@ -1,0 +1,22 @@
+def addListtest(inputList, testnum):
+    index1 = 0
+    index2 = 0 # this one resets
+    listend = len(inputList)
+    while index1 < listend:
+        index2 = index1 + 1 #index2 will always be one ahead of index1.
+        while index2 < listend:
+            comparison = inputList[index1] + inputList[index2]
+            if comparison == testnum:
+                return True
+            else:
+                index2 += 1
+        index1 += 1
+    return False
+
+someList = [10,15,3,7]
+k = 18
+doesItwork = addListtest(someList, k)
+if doesItwork == True:
+    print("The list has variables that add up to ", k,".")
+else:
+    print("The list does not have variables that add up to ", k,".")
