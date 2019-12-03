@@ -1,0 +1,53 @@
+//
+//  main.cpp
+//  Daily Coding Problem 1
+//
+//  Created by Parker Bolz on 11/10/19.
+//  Copyright © 2019 Parker Bolz. All rights reserved.
+//
+
+#include <iostream>
+#include <array>
+
+using namespace std;
+
+int arraySize(int arr[]){
+    int size = *(&arr + 1) - arr;
+    return size;
+}
+
+bool arrayCheck(int arr[], int size, int sumtest){
+    int index1 = 0;
+    int index2 = 0; // this index will reset;
+    int mainInt = NULL; // this is the int that we focus on in the loop.
+    int compareInt = NULL; //this is the int that we are adding it to.
+    int sumOfints = NULL;
+    while(index1 < size){
+        mainInt = arr[index1];
+        index2 = index1+1;
+        while(index2 < size){
+            compareInt = arr[index2];
+            sumOfints = mainInt + compareInt;
+            if(sumOfints == sumtest){
+                return true;
+            }else{
+                index2++;
+            }
+        }
+        index1++;
+    }
+    return false;
+}
+
+int main(){
+    int testArray[] = {10,15,3,7};
+    int k = 16;
+    int size = *(&testArray + 1) - testArray;
+    bool test = arrayCheck(testArray, size, k);
+    if(test == true){
+        cout << "true\n";
+    }else{
+        cout << "false\n";
+    }
+    cout << "done\n";
+}
